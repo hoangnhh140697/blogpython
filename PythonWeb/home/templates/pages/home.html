@@ -1,0 +1,11 @@
+ {% extends "pages/base.html" %}
+
+ {% block title %} Home {% endblock %}
+
+
+ {% block content %} 
+    {% for row in d %}
+     {{ row.1 }}
+    {% endfor %}
+    <h1>Hello World</h1>
+ {% endblock %}
