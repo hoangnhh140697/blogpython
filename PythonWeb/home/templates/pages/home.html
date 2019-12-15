@@ -1,11 +1,157 @@
- {% extends "pages/base.html" %}
+{% extends "pages/base.html" %}
 
- {% block title %} Home {% endblock %}
+{% block title %} Home {% endblock %}
 
 
- {% block content %} 
-    {% for row in d %}
-     {{ row.1 }}
-    {% endfor %}
-    <h1>Hello World</h1>
- {% endblock %}
+{% block content %} 
+   <section id="sec-cate" class="mb-3">
+      <div class="card">
+         <div class="card-header">
+            <div class="row">
+               <h4 class="col-md-8">Thủ thuật Internet</h4>
+               <div class="btn-read-more col-md-4 text-right"><a href="category/2" class="btn btn-primary">Xem thêm</a></div>
+            </div>
+         </div>
+
+      <div class="card-body">
+         {% load static %}
+         <div class="row">
+         {% for row in Post_1 %}
+            <div class="post-item col-md-3">
+               <div class="post-item-inner">
+                  <div class="post-item-head">
+                     <a href="share/details/{{ row.post_id }}"><img src="{% static 'img/' %}{{ row.thumbnail }}"/></a>
+                  </div>
+                  <div class="post-item-body">
+                     <div class="post-item-title">
+                        <h4><a href="share/details/{{ row.post_id }}">{{ row.title }}</a></h4>
+                     </div>
+                     <p class="post-item-desc">{{ row.description }}</p>
+                     <div class="btn-control text-right">
+                        <a href="share/details/{{ row.post_id }}" class="btn-read-more">Đọc thêm</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         {% endfor %}
+         </div>
+      </div>
+   </div>
+   </section>
+
+
+   <!-- BEGIN thu thuat may tinh -->
+   <section id="sec-cate" class="mb-3">
+      <div class="card">
+         <div class="card-header">
+            <div class="row">
+               <h4 class="col-md-8">Thủ thuật máy tính</h4>
+               <div class="btn-read-more col-md-4 text-right"><a href="category/3" class="btn btn-primary">Xem thêm</a></div>
+            </div>
+         </div>
+
+      <div class="card-body">
+         {% load static %}
+         <div class="row">
+         {% for row in Post_2 %}
+            <div class="post-item col-md-3">
+               <div class="post-item-inner">
+                  <div class="post-item-head">
+                     <a href="share/details/{{ row.post_id }}"><img src="{% static 'img/' %}{{ row.thumbnail }}"/></a>
+                  </div>
+                  <div class="post-item-body">
+                     <div class="post-item-title">
+                        <h4><a href="share/details/{{ row.post_id }}">{{ row.title }}</a></h4>
+                     </div>
+                     <p class="post-item-desc">{{ row.description }}</p>
+                     <div class="btn-control text-right">
+                        <a href="share/details/{{ row.post_id }}" class="btn-read-more">Đọc thêm</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         {% endfor %}
+         </div>
+      </div>
+   </div>
+   </section>
+   <!-- END thu thuat may tinh -->
+
+  <div class="row">
+       <!-- BEGIN thu thuat lap trinh -->
+      <section id="sec-cate" class="mb-3 col-md-6">
+         <div class="card">
+            <div class="card-header">
+               <div class="row">
+                  <h4 class="col-md-8">Thủ thuật lập trình</h4>
+                  <div class="btn-read-more col-md-4 text-right"><a href="category/4" class="btn btn-primary">Xem thêm</a></div>
+               </div>
+            </div>
+
+         <div class="card-body">
+            {% load static %}
+            <div class="row">
+            {% for row in Post_3 %}
+               <div class="post-item col-md-4">
+                  <div class="post-item-inner">
+                     <div class="post-item-head">
+                        <a href="share/details/{{ row.post_id }}"><img src="{% static 'img/' %}{{ row.thumbnail }}"/></a>
+                     </div>
+                     <div class="post-item-body">
+                        <div class="post-item-title">
+                           <h4><a href="share/details/{{ row.post_id }}">{{ row.title }}</a></h4>
+                        </div>
+                        <p class="post-item-desc">{{ row.description }}</p>
+                        <div class="btn-control text-right">
+                           <a href="share/details/{{ row.post_id }}" class="btn-read-more"> Đọc thêm</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            {% endfor %}
+            </div>
+         </div>
+      </div>
+      </section>
+      <!-- END thu thuat lap trinh -->
+
+
+      
+      <!-- BEGIN thu thuat lap trinh -->
+      <section id="sec-cate" class="mb-3 col-md-6">
+         <div class="card">
+            <div class="card-header">
+               <div class="row">
+                  <h4 class="col-md-8">Mẹo vặt</h4>
+                  <div class="btn-read-more col-md-4 text-right"><a href="category/5" class="btn btn-primary">Xem thêm</a></div>
+               </div>
+            </div>
+
+         <div class="card-body">
+            {% load static %}
+            <div class="row">
+            {% for row in Post_3 %}
+               <div class="post-item col-md-4">
+                  <div class="post-item-inner">
+                     <div class="post-item-head">
+                        <a href="share/details/{{ row.post_id }}"><img src="{% static 'img/' %}{{ row.thumbnail }}"/></a>
+                     </div>
+                     <div class="post-item-body">
+                        <div class="post-item-title">
+                           <h4><a href="share/details/{{ row.post_id }}">{{ row.title }}</a></h4>
+                        </div>
+                        <p class="post-item-desc">{{ row.description }}</p>
+                        <div class="btn-control text-right">
+                           <a href="share/details/{{ row.post_id }}" class="btn-read-more">Đọc thêm</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            {% endfor %}
+            </div>
+         </div>
+      </div>
+      </section>
+      <!-- END thu thuat lap trinh -->
+  </div>
+{% endblock %}

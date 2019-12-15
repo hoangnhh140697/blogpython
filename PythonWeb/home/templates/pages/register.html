@@ -1,0 +1,25 @@
+{% extends "pages/base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %} Đăng ký  {% endblock %}
+
+
+{% block content %} 
+
+    <div class="card">
+        <div class="card-header">
+            <h4>Đăng ký</h4>
+        </div>
+        <div class="card-body">
+            <form action='.' method='POST'>
+                {% csrf_token %}
+                {{form.as_p}}
+                <div class="form-group">
+                    <button type="submit" class="form-control btn btn-primary">Đăng ký </button>
+                </div>
+    
+            </form>
+        </div>
+    </div>
+{% endblock %} 

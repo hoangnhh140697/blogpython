@@ -14,6 +14,8 @@
     <script src="{% static 'js/scripts.js' %}" type="text/javascript"></script>
 </head>
 <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v5.0&amp;appId=519833115108330&amp;autoLogAppEvents=1"></script>
     {% include 'views/v_header.html'  %}
 
 
@@ -23,7 +25,6 @@
         <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Toggle</small></button>
 
         {% block content %}
-    
         {% endblock %}
 
     </div>

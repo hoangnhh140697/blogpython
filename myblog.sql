@@ -2,10 +2,10 @@
 -- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 13, 2019 lúc 01:16 PM
--- Phiên bản máy phục vụ: 10.4.8-MariaDB
--- Phiên bản PHP: 7.3.11
+-- Host: 127.0.0.1
+-- Generation Time: Dec 15, 2019 at 04:21 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `myblog`
+-- Database: `myblog`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `auth_group`
+-- Table structure for table `auth_group`
 --
 
 CREATE TABLE `auth_group` (
@@ -36,7 +36,7 @@ CREATE TABLE `auth_group` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `auth_group_permissions`
+-- Table structure for table `auth_group_permissions`
 --
 
 CREATE TABLE `auth_group_permissions` (
@@ -48,7 +48,7 @@ CREATE TABLE `auth_group_permissions` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `auth_permission`
+-- Table structure for table `auth_permission`
 --
 
 CREATE TABLE `auth_permission` (
@@ -59,7 +59,7 @@ CREATE TABLE `auth_permission` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `auth_permission`
+-- Dumping data for table `auth_permission`
 --
 
 INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALUES
@@ -91,7 +91,7 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `auth_user`
+-- Table structure for table `auth_user`
 --
 
 CREATE TABLE `auth_user` (
@@ -109,16 +109,17 @@ CREATE TABLE `auth_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `auth_user`
+-- Dumping data for table `auth_user`
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$180000$vUoDaKGzpFHG$lB9w1eNffL3GUyM9h+7ynV4o+b2JP5PXj4nbtb/84UE=', '2019-12-12 14:15:10.831249', 1, 'admin', '', '', 'hoangnhh140697@gmail.com', 1, 1, '2019-12-12 14:05:02.258920');
+(1, 'pbkdf2_sha256$180000$TWAg7R4AbeXx$RdxnkSfqcLcZ46VPIx5SkS/3owI8rlcPCUyI7u8ZT5A=', '2019-12-15 15:17:27.893205', 1, 'admin', '', '', 'admin@gmail.com', 1, 1, '2019-12-14 09:46:56.395981'),
+(2, 'pbkdf2_sha256$180000$AnAsW5AumSFW$yRrqdgbhJvziA1CMy2sbK3aWsQbLSj5SNk0kLRw9LMI=', '2019-12-15 15:10:44.800374', 0, 'test', '', '', 'testB@gmail.com', 0, 1, '2019-12-15 13:58:07.342220');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `auth_user_groups`
+-- Table structure for table `auth_user_groups`
 --
 
 CREATE TABLE `auth_user_groups` (
@@ -130,7 +131,7 @@ CREATE TABLE `auth_user_groups` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `auth_user_user_permissions`
+-- Table structure for table `auth_user_user_permissions`
 --
 
 CREATE TABLE `auth_user_user_permissions` (
@@ -142,7 +143,7 @@ CREATE TABLE `auth_user_user_permissions` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
@@ -151,10 +152,21 @@ CREATE TABLE `category` (
   `cate_status` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`cate_id`, `cate_name`, `cate_status`) VALUES
+(1, 'Thủ thuật', b'0'),
+(2, 'Thủ thuật Internet', b'0'),
+(3, 'Thủ thuật máy tính', b'0'),
+(4, 'Thủ thuật lập trình', b'0'),
+(5, 'Mẹo hay cuộc sống', b'0');
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `comment`
+-- Table structure for table `comment`
 --
 
 CREATE TABLE `comment` (
@@ -168,10 +180,35 @@ CREATE TABLE `comment` (
   `approve` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`comment_id`, `post_id`, `user_id`, `content`, `parent_comment`, `visiter_name`, `comment_date`, `approve`) VALUES
+(2, 2, 1, '123', 0, 'a', '2019-12-15', 0),
+(3, 2, NULL, '123456', 0, 'A', '2019-12-15', 0);
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `django_admin_log`
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `contact_id` int(11) NOT NULL,
+  `contact_name` varchar(50) COLLATE utf8_vietnamese_ci NOT NULL,
+  `contact_phone` varchar(11) COLLATE utf8_vietnamese_ci NOT NULL,
+  `contact_email` varchar(50) COLLATE utf8_vietnamese_ci NOT NULL,
+  `subject` varchar(50) COLLATE utf8_vietnamese_ci NOT NULL,
+  `message` text COLLATE utf8_vietnamese_ci NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `date_sended` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `django_admin_log`
 --
 
 CREATE TABLE `django_admin_log` (
@@ -185,7 +222,7 @@ CREATE TABLE `django_admin_log` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `django_content_type`
+-- Table structure for table `django_content_type`
 --
 
 CREATE TABLE `django_content_type` (
@@ -195,7 +232,7 @@ CREATE TABLE `django_content_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `django_content_type`
+-- Dumping data for table `django_content_type`
 --
 
 INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
@@ -204,12 +241,15 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (2, 'auth', 'permission'),
 (4, 'auth', 'user'),
 (5, 'contenttypes', 'contenttype'),
+(9, 'home', 'category'),
+(7, 'home', 'post'),
+(8, 'home', 'postcategory'),
 (6, 'sessions', 'session');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `django_migrations`
+-- Table structure for table `django_migrations`
 --
 
 CREATE TABLE `django_migrations` (
@@ -220,32 +260,32 @@ CREATE TABLE `django_migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `django_migrations`
+-- Dumping data for table `django_migrations`
 --
 
 INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
-(1, 'contenttypes', '0001_initial', '2019-12-12 14:01:57.343918'),
-(2, 'auth', '0001_initial', '2019-12-12 14:01:57.844999'),
-(3, 'admin', '0001_initial', '2019-12-12 14:01:59.157587'),
-(4, 'admin', '0002_logentry_remove_auto_add', '2019-12-12 14:01:59.682211'),
-(5, 'admin', '0003_logentry_add_action_flag_choices', '2019-12-12 14:01:59.717117'),
-(6, 'contenttypes', '0002_remove_content_type_name', '2019-12-12 14:01:59.939036'),
-(7, 'auth', '0002_alter_permission_name_max_length', '2019-12-12 14:02:00.068689'),
-(8, 'auth', '0003_alter_user_email_max_length', '2019-12-12 14:02:00.197344'),
-(9, 'auth', '0004_alter_user_username_opts', '2019-12-12 14:02:00.219286'),
-(10, 'auth', '0005_alter_user_last_login_null', '2019-12-12 14:02:00.384844'),
-(11, 'auth', '0006_require_contenttypes_0002', '2019-12-12 14:02:00.394817'),
-(12, 'auth', '0007_alter_validators_add_error_messages', '2019-12-12 14:02:00.422742'),
-(13, 'auth', '0008_alter_user_username_max_length', '2019-12-12 14:02:00.544928'),
-(14, 'auth', '0009_alter_user_last_name_max_length', '2019-12-12 14:02:00.591803'),
-(15, 'auth', '0010_alter_group_name_max_length', '2019-12-12 14:02:00.773834'),
-(16, 'auth', '0011_update_proxy_permissions', '2019-12-12 14:02:00.792783'),
-(17, 'sessions', '0001_initial', '2019-12-12 14:02:00.866103');
+(1, 'contenttypes', '0001_initial', '2019-12-14 09:45:21.065760'),
+(2, 'auth', '0001_initial', '2019-12-14 09:45:21.165997'),
+(3, 'admin', '0001_initial', '2019-12-14 09:45:21.479255'),
+(4, 'admin', '0002_logentry_remove_auto_add', '2019-12-14 09:45:21.557252'),
+(5, 'admin', '0003_logentry_add_action_flag_choices', '2019-12-14 09:45:21.566246'),
+(6, 'contenttypes', '0002_remove_content_type_name', '2019-12-14 09:45:21.653269'),
+(7, 'auth', '0002_alter_permission_name_max_length', '2019-12-14 09:45:21.716300'),
+(8, 'auth', '0003_alter_user_email_max_length', '2019-12-14 09:45:21.765189'),
+(9, 'auth', '0004_alter_user_username_opts', '2019-12-14 09:45:21.774182'),
+(10, 'auth', '0005_alter_user_last_login_null', '2019-12-14 09:45:21.814243'),
+(11, 'auth', '0006_require_contenttypes_0002', '2019-12-14 09:45:21.817242'),
+(12, 'auth', '0007_alter_validators_add_error_messages', '2019-12-14 09:45:21.827235'),
+(13, 'auth', '0008_alter_user_username_max_length', '2019-12-14 09:45:21.841227'),
+(14, 'auth', '0009_alter_user_last_name_max_length', '2019-12-14 09:45:21.861214'),
+(15, 'auth', '0010_alter_group_name_max_length', '2019-12-14 09:45:21.910219'),
+(16, 'auth', '0011_update_proxy_permissions', '2019-12-14 09:45:21.920839'),
+(17, 'sessions', '0001_initial', '2019-12-14 09:45:21.943824');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `django_session`
+-- Table structure for table `django_session`
 --
 
 CREATE TABLE `django_session` (
@@ -255,16 +295,19 @@ CREATE TABLE `django_session` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `django_session`
+-- Dumping data for table `django_session`
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('567ws1vtd8uzhlwmtt04omtxn9d0h50e', 'ZmExMGMxODA3MjBjMjFlNTdmZDMwMWZjMmIwOTE3MjMxMTJmYmM4Njp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIwZjVmYzk4MWQyZDMwNDBiNTZlN2U1MGNjZWZkMjU5MTk2YWQxOGI0In0=', '2019-12-26 14:15:10.834241');
+('6p3wcsmgmwsvnn1iful1yq1mjrm5omlm', 'Y2I0NTRkYTM2YTJlMDZkY2RmNjY1NWE2ZGNiYmExNTc3Mjk4OTQ5ZDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZTZjN2ExNjcyZDYwMGMwMTU5ZWFmMjk3Y2ZiOGY4YzEyOTQwYTU0In0=', '2019-12-29 15:17:27.895336'),
+('9ngnbnp4muf87ppcd9bw6g7v2xyqd0my', 'MDY2M2VmZjQ0YTk2ZGE1M2UwMjJmZmU5NjgyY2JkNTFhNmZhOTBhMTp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIyYTYyZjc0YzMzY2RlMzc4NzBkODE4YTliODJkNjg0ODAyYWYxZjg5In0=', '2019-12-29 14:16:51.551894'),
+('n7y2ca9noykycze50sx1aa341ms6z7ug', 'Y2I0NTRkYTM2YTJlMDZkY2RmNjY1NWE2ZGNiYmExNTc3Mjk4OTQ5ZDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZTZjN2ExNjcyZDYwMGMwMTU5ZWFmMjk3Y2ZiOGY4YzEyOTQwYTU0In0=', '2019-12-29 14:15:59.531534'),
+('ytj26matqgu4vgwgg5j95s4b98uaxxc2', 'Y2I0NTRkYTM2YTJlMDZkY2RmNjY1NWE2ZGNiYmExNTc3Mjk4OTQ5ZDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZTZjN2ExNjcyZDYwMGMwMTU5ZWFmMjk3Y2ZiOGY4YzEyOTQwYTU0In0=', '2019-12-29 14:06:54.340856');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `post`
+-- Table structure for table `post`
 --
 
 CREATE TABLE `post` (
@@ -277,21 +320,42 @@ CREATE TABLE `post` (
   `comment_enabled` bit(1) NOT NULL DEFAULT b'1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
+--
+-- Dumping data for table `post`
+--
+
+INSERT INTO `post` (`post_id`, `user_id`, `title`, `description`, `thumbnail`, `date_published`, `comment_enabled`) VALUES
+(1, 1, 'Test', '123', 'test.jpg', '2019-12-14', b'1'),
+(2, 1, 'Test 111', 'test', 'test.jpg', '2019-12-14', b'1'),
+(3, 1, 'Test 123', '123', 'test.jpg', '2019-12-14', b'1');
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `post_category`
+-- Table structure for table `post_category`
 --
 
 CREATE TABLE `post_category` (
+  `id` int(11) NOT NULL,
   `cate_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
+--
+-- Dumping data for table `post_category`
+--
+
+INSERT INTO `post_category` (`id`, `cate_id`, `post_id`) VALUES
+(1, 1, 1),
+(2, 2, 2),
+(3, 4, 3),
+(4, 3, 1),
+(5, 2, 3);
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tag`
+-- Table structure for table `tag`
 --
 
 CREATE TABLE `tag` (
@@ -300,41 +364,19 @@ CREATE TABLE `tag` (
   `tag_name` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
--- --------------------------------------------------------
-
 --
--- Cấu trúc bảng cho bảng `user`
---
-
-CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL,
-  `username` varchar(50) COLLATE utf8_vietnamese_ci NOT NULL,
-  `pass` varchar(100) COLLATE utf8_vietnamese_ci NOT NULL,
-  `full_name` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL,
-  `avatar` varchar(255) COLLATE utf8_vietnamese_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
-
---
--- Đang đổ dữ liệu cho bảng `user`
---
-
-INSERT INTO `user` (`user_id`, `username`, `pass`, `full_name`, `avatar`) VALUES
-(1, 'a', '123', 'Hoang Nguyen', NULL),
-(2, 'b', '123', 'Hoang B', NULL);
-
---
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `auth_group`
+-- Indexes for table `auth_group`
 --
 ALTER TABLE `auth_group`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
 
 --
--- Chỉ mục cho bảng `auth_group_permissions`
+-- Indexes for table `auth_group_permissions`
 --
 ALTER TABLE `auth_group_permissions`
   ADD PRIMARY KEY (`id`),
@@ -342,21 +384,21 @@ ALTER TABLE `auth_group_permissions`
   ADD KEY `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` (`permission_id`);
 
 --
--- Chỉ mục cho bảng `auth_permission`
+-- Indexes for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`);
 
 --
--- Chỉ mục cho bảng `auth_user`
+-- Indexes for table `auth_user`
 --
 ALTER TABLE `auth_user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Chỉ mục cho bảng `auth_user_groups`
+-- Indexes for table `auth_user_groups`
 --
 ALTER TABLE `auth_user_groups`
   ADD PRIMARY KEY (`id`),
@@ -364,7 +406,7 @@ ALTER TABLE `auth_user_groups`
   ADD KEY `auth_user_groups_group_id_97559544_fk_auth_group_id` (`group_id`);
 
 --
--- Chỉ mục cho bảng `auth_user_user_permissions`
+-- Indexes for table `auth_user_user_permissions`
 --
 ALTER TABLE `auth_user_user_permissions`
   ADD PRIMARY KEY (`id`),
@@ -372,13 +414,13 @@ ALTER TABLE `auth_user_user_permissions`
   ADD KEY `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` (`permission_id`);
 
 --
--- Chỉ mục cho bảng `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`cate_id`);
 
 --
--- Chỉ mục cho bảng `comment`
+-- Indexes for table `comment`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`comment_id`),
@@ -386,190 +428,191 @@ ALTER TABLE `comment`
   ADD KEY `user_id` (`user_id`);
 
 --
--- Chỉ mục cho bảng `django_content_type`
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`contact_id`);
+
+--
+-- Indexes for table `django_content_type`
 --
 ALTER TABLE `django_content_type`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`);
 
 --
--- Chỉ mục cho bảng `django_migrations`
+-- Indexes for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `django_session`
+-- Indexes for table `django_session`
 --
 ALTER TABLE `django_session`
   ADD PRIMARY KEY (`session_key`),
   ADD KEY `django_session_expire_date_a5c62663` (`expire_date`);
 
 --
--- Chỉ mục cho bảng `post`
+-- Indexes for table `post`
 --
 ALTER TABLE `post`
   ADD PRIMARY KEY (`post_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Chỉ mục cho bảng `post_category`
+-- Indexes for table `post_category`
 --
 ALTER TABLE `post_category`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `cate_id` (`cate_id`),
   ADD KEY `post_id` (`post_id`);
 
 --
--- Chỉ mục cho bảng `tag`
+-- Indexes for table `tag`
 --
 ALTER TABLE `tag`
   ADD PRIMARY KEY (`tag_id`),
   ADD KEY `post_id` (`post_id`);
 
 --
--- Chỉ mục cho bảng `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `auth_group`
+-- AUTO_INCREMENT for table `auth_group`
 --
 ALTER TABLE `auth_group`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `auth_group_permissions`
+-- AUTO_INCREMENT for table `auth_group_permissions`
 --
 ALTER TABLE `auth_group_permissions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `auth_permission`
+-- AUTO_INCREMENT for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT cho bảng `auth_user`
+-- AUTO_INCREMENT for table `auth_user`
 --
 ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `auth_user_groups`
+-- AUTO_INCREMENT for table `auth_user_groups`
 --
 ALTER TABLE `auth_user_groups`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `auth_user_user_permissions`
+-- AUTO_INCREMENT for table `auth_user_user_permissions`
 --
 ALTER TABLE `auth_user_user_permissions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `cate_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `comment`
+-- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT cho bảng `django_admin_log`
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `django_content_type`
+-- AUTO_INCREMENT for table `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT cho bảng `django_migrations`
+-- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT cho bảng `post`
+-- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT cho bảng `tag`
+-- AUTO_INCREMENT for table `post_category`
 --
-ALTER TABLE `tag`
-  MODIFY `tag_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `post_category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `user`
---
-ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `auth_group_permissions`
+-- Constraints for table `auth_group_permissions`
 --
 ALTER TABLE `auth_group_permissions`
   ADD CONSTRAINT `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
   ADD CONSTRAINT `auth_group_permissions_group_id_b120cbf9_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`);
 
 --
--- Các ràng buộc cho bảng `auth_permission`
+-- Constraints for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
   ADD CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`);
 
 --
--- Các ràng buộc cho bảng `auth_user_groups`
+-- Constraints for table `auth_user_groups`
 --
 ALTER TABLE `auth_user_groups`
   ADD CONSTRAINT `auth_user_groups_group_id_97559544_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`),
   ADD CONSTRAINT `auth_user_groups_user_id_6a12ed8b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
--- Các ràng buộc cho bảng `auth_user_user_permissions`
+-- Constraints for table `auth_user_user_permissions`
 --
 ALTER TABLE `auth_user_user_permissions`
   ADD CONSTRAINT `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
   ADD CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
--- Các ràng buộc cho bảng `comment`
+-- Constraints for table `comment`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `comment_fkid_post` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`),
-  ADD CONSTRAINT `comment_fkid_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+  ADD CONSTRAINT `comment_fkid_user` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
--- Các ràng buộc cho bảng `post_category`
+-- Constraints for table `post`
+--
+ALTER TABLE `post`
+  ADD CONSTRAINT `post_fkid_user` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
+
+--
+-- Constraints for table `post_category`
 --
 ALTER TABLE `post_category`
-  ADD CONSTRAINT `postcate_fkcate_cate` FOREIGN KEY (`cate_id`) REFERENCES `category` (`cate_id`),
-  ADD CONSTRAINT `postcate_fkpost_post` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`);
-
---
--- Các ràng buộc cho bảng `tag`
---
-ALTER TABLE `tag`
-  ADD CONSTRAINT `tag_fkid_post` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`);
+  ADD CONSTRAINT `postcate_fkid_cate` FOREIGN KEY (`cate_id`) REFERENCES `category` (`cate_id`),
+  ADD CONSTRAINT `postcate_fkid_post` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
