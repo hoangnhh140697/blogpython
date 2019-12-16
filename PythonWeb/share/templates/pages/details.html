@@ -1,11 +1,11 @@
 {% extends "pages/base.html" %}
 {% load static %}
-
+{% include slugify %}
 {% block title %} {{ PostDetails.title }}  {% endblock %}
 
 
 {% block content %} 
-    
+    {{test}}
     <div class="card mb-3">
         <div class="card-header">
             <div class="row">
@@ -21,6 +21,25 @@
             <div class="post-id-{{ PostDetails.post_id }}" id="post-details">
                 <div class="post-content">
                     {{ PostDetails.description }}
+                </div>
+                <hr>
+                <div class="post-info">
+                    <div class="post-categories">
+                        <ul class="list-cate">
+                            <li>Danh mục: </li>
+                        {% for cate in ListCate %}
+                            <li><a href="{{path}}/category/{{cate.cate_slug}}/{{ cate.cate_id}}">{{cate.cate_name}}</a></li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="post-tags">
+                        <ul class="list-tag">
+                            <li>Thẻ: </li>
+                        {% for tag in ListTag %}
+                            <li><a href="{{path}}/tag/{{tag.tag_slug}}/{{ tag.tag_id}}">{{tag.tag_name}}</a></li>
+                        {% endfor %}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

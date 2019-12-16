@@ -1,0 +1,42 @@
+{% extends "pages/base.html" %}
+
+{% block title %} {{ Posts.0.tag_name }} {% endblock %}
+
+
+{% block content %} 
+   <div class="card">
+        <div class="card-header">
+            <h4>Tag: {{ Posts.0.tag_name }}</h4>
+        </div>
+
+         <div class="card-body">
+            {% load static %}
+            <div class="row">
+            {% if Count > 0 %}
+                {% for row in Posts %}
+                <div class="post-item col-md-3">
+                    <div class="post-item-inner">
+                        <div class="post-item-head">
+                            <a href="{{ path }}/share/details/{{ row.post_id }}"><img src="{% static 'img/' %}{{ row.thumbnail }}"/></a>
+                        </div>
+                        <div class="post-item-body">
+                            <div class="post-item-title">
+                            <h4><a href="{{ path }}/share/details/{{ row.post_id }}">{{ row.title }}</a></h4>
+                            </div>
+                            <p class="post-item-desc">{{ row.description }}</p>
+                            <div class="btn-control text-right">
+                            <a href="{{ path }}/share/details/{{ row.post_id }}" class="btn-read-more"> Đọc thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="alert alert-info w-100">Không có bài viết nào được tìm thấy trong danh mục này</p>
+            {% endif %}
+            </div>
+         </div>
+      </div>
+
+
+{% endblock %}

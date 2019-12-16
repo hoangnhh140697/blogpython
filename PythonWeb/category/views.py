@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from home.common import C_Post
 from home.common import Common
-from django.views.generic import ListView, DetailView
 
 
 def index(request, slug, id):    

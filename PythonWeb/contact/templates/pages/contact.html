@@ -1,0 +1,44 @@
+{% extends "pages/base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %} Contact  {% endblock %}
+
+
+{% block content %} 
+
+    <div class="card">
+        <div class="card-header">
+            <h4>Liên hệ</h4>
+        </div>
+        <div class="card-body">
+            {% if notify != string.empty %}
+                <p class="alert alert-info">{{notify}}</p>
+            {% endif %}
+            <form method='POST'>
+            {% csrf_token %}
+            <input type="hidden" name="next" value="." />
+                <div class="form-group">
+                    <input type="text" name="txtName" placeholder="Họ tên" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="txtPhone" placeholder="Số điện thoại" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="txtEmail" placeholder="Email" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="txtSubject" placeholder="Tiêu đề" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <textarea name="txtMessage" placeholder="Nội dung" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Gửi" class="form-control btn btn-primary"/>
+                    
+                </div>
+                
+            </form>
+        </div>
+    </div>
+{% endblock %} 

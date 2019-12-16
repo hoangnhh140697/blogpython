@@ -77,7 +77,7 @@ class AuthUserUserPermissions(models.Model):
 class Category(models.Model):
     cate_id = models.AutoField(primary_key=True)
     cate_name = models.CharField(max_length=255)
-    cate_status = models.TextField()  # This field type is a guess.
+    cate_status = models.IntegerField()
 
     class Meta:
         managed = False
@@ -107,6 +107,7 @@ class Contact(models.Model):
     subject = models.CharField(max_length=50)
     message = models.TextField()
     status = models.IntegerField()
+    date_sended = models.DateField()
 
     class Meta:
         managed = False
@@ -164,7 +165,7 @@ class Post(models.Model):
     description = models.TextField(blank=True, null=True)
     thumbnail = models.CharField(max_length=255, blank=True, null=True)
     date_published = models.DateField(blank=True, null=True)
-    comment_enabled = models.TextField()  # This field type is a guess.
+    comment_enabled = models.IntegerField()
 
     class Meta:
         managed = False
@@ -183,7 +184,7 @@ class PostCategory(models.Model):
 class Tag(models.Model):
     tag_id = models.IntegerField(primary_key=True)
     post_id = models.IntegerField()
-    tag_name = models.IntegerField()
+    tag_name = models.CharField(max_length=255)
 
     class Meta:
         managed = False

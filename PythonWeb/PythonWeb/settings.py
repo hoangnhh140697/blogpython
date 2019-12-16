@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'home',
     'share',
-    'category'
+    'category',
+    'contact',
+    'tag'
 ]
 
 MIDDLEWARE = [

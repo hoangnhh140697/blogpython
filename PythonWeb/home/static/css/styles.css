@@ -156,3 +156,37 @@ section#sec-cate .card-header {
   background-color: #fff;
   font-size: 14px;
 }
+
+/*
+  @Cate and Tag
+*/
+ul.list-cate, 
+ul.list-tag {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.list-cate li,
+ul.list-tag li {
+  display: inline-block;
+}
+
+ul.list-cate li:after,
+ul.list-cate li:after {content: ",";}
+
+ul.list-cate li:first-child:after, ul.list-cate li:last-child:after,
+ul.list-tag li:first-child:after, ul.list-tag li:last-child:after 
+{
+  content: "";
+}
+
+ul.list-cate li a,
+ul.list-tag li a {
+    text-decoration: none;
+}
+
+ul.list-cate li:first-child,
+ul.list-tag li:first-child {
+    font-weight: bold;
+}

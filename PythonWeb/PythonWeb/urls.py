@@ -21,6 +21,8 @@ urlpatterns = [
     path('', include('home.urls')),
     path('share/', include('share.urls')),
     path('category/', include('category.urls')),
+    path('contact/', include('contact.urls')),
+    path('tag/', include('tag.urls')),
 ]
 
 handler404 = 'home.views.error404'
