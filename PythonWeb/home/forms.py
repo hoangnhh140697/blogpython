@@ -23,7 +23,7 @@ class RegistrationForm(forms.Form):
             User.objects.get(username=username)
         except ObjectDoesNotExist:
             return username
-        raise forms.MultiValueField("Tài khoản đã tồn tại")
+        raise forms.ValidationError("Tài khoản đã tồn tại")
     def save(self):
         User.objects.create_user(username=self.cleaned_data['username'], email=self.cleaned_data['email'], password=self.cleaned_data['password1'])
 

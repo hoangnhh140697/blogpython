@@ -1,6 +1,14 @@
 {% extends "pages/base.html" %}
 
-{% block title %} {{ Posts.0.cate_name }} {% endblock %}
+{% block title %} 
+    
+    {% if not Posts.0.cate_name %}
+        Danh mục
+    {% else %}
+        {{ Posts.0.cate_name }}
+    {% endif %} 
+
+{% endblock %}
 
 
 {% block content %} 

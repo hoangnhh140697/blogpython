@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2019 at 04:21 PM
+-- Generation Time: Dec 18, 2019 at 12:35 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -113,8 +113,9 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$180000$TWAg7R4AbeXx$RdxnkSfqcLcZ46VPIx5SkS/3owI8rlcPCUyI7u8ZT5A=', '2019-12-15 15:17:27.893205', 1, 'admin', '', '', 'admin@gmail.com', 1, 1, '2019-12-14 09:46:56.395981'),
-(2, 'pbkdf2_sha256$180000$AnAsW5AumSFW$yRrqdgbhJvziA1CMy2sbK3aWsQbLSj5SNk0kLRw9LMI=', '2019-12-15 15:10:44.800374', 0, 'test', '', '', 'testB@gmail.com', 0, 1, '2019-12-15 13:58:07.342220');
+(1, 'pbkdf2_sha256$180000$TWAg7R4AbeXx$RdxnkSfqcLcZ46VPIx5SkS/3owI8rlcPCUyI7u8ZT5A=', '2019-12-18 11:33:08.815992', 1, 'admin', '', '', 'admin@gmail.com', 1, 1, '2019-12-14 09:46:56.395981'),
+(2, 'pbkdf2_sha256$180000$AnAsW5AumSFW$yRrqdgbhJvziA1CMy2sbK3aWsQbLSj5SNk0kLRw9LMI=', '2019-12-15 15:10:44.800374', 0, 'test', '', '', 'testB@gmail.com', 0, 1, '2019-12-15 13:58:07.342220'),
+(3, 'pbkdf2_sha256$180000$joIyErFaM9WT$xgzQz/Jdbxnl0wKC69yOwFn+v2phNOR7yd1rt3i7Mi4=', '2019-12-16 15:49:23.334428', 0, 'test123', '', '', 'hoangnhh140697@gmail.com', 0, 1, '2019-12-16 15:49:13.491508');
 
 -- --------------------------------------------------------
 
@@ -149,7 +150,7 @@ CREATE TABLE `auth_user_user_permissions` (
 CREATE TABLE `category` (
   `cate_id` int(11) NOT NULL,
   `cate_name` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL,
-  `cate_status` bit(1) NOT NULL DEFAULT b'0'
+  `cate_status` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
@@ -157,11 +158,11 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`cate_id`, `cate_name`, `cate_status`) VALUES
-(1, 'Thủ thuật', b'0'),
-(2, 'Thủ thuật Internet', b'0'),
-(3, 'Thủ thuật máy tính', b'0'),
-(4, 'Thủ thuật lập trình', b'0'),
-(5, 'Mẹo hay cuộc sống', b'0');
+(1, 'Thủ thuật', 0),
+(2, 'Thủ thuật Internet', 1),
+(3, 'Thủ thuật máy tính', 1),
+(4, 'Thủ thuật lập trình', 1),
+(5, 'Mẹo hay cuộc sống', 1);
 
 -- --------------------------------------------------------
 
@@ -177,7 +178,7 @@ CREATE TABLE `comment` (
   `parent_comment` int(11) NOT NULL,
   `visiter_name` varchar(50) COLLATE utf8_vietnamese_ci DEFAULT NULL,
   `comment_date` date DEFAULT NULL,
-  `approve` int(11) NOT NULL
+  `approve` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
@@ -186,7 +187,7 @@ CREATE TABLE `comment` (
 
 INSERT INTO `comment` (`comment_id`, `post_id`, `user_id`, `content`, `parent_comment`, `visiter_name`, `comment_date`, `approve`) VALUES
 (2, 2, 1, '123', 0, 'a', '2019-12-15', 0),
-(3, 2, NULL, '123456', 0, 'A', '2019-12-15', 0);
+(3, 2, NULL, '123456', 0, 'A', '2019-12-15', 1);
 
 -- --------------------------------------------------------
 
@@ -205,6 +206,14 @@ CREATE TABLE `contact` (
   `date_sended` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`contact_id`, `contact_name`, `contact_phone`, `contact_email`, `subject`, `message`, `status`, `date_sended`) VALUES
+(12, 'MTB0001', '0944114697', 'hoangnhh140697@gmail.com', '123', '43223423', 0, '2019-12-16'),
+(13, 'MTB0002', '0944114697', 'hoangnhh140697@gmail.com', 'sfefsefse', 'sdfsfs', 0, '2019-12-16');
+
 -- --------------------------------------------------------
 
 --
@@ -218,6 +227,23 @@ CREATE TABLE `django_admin_log` (
   `object_repr` varchar(200) COLLATE utf8_vietnamese_ci NOT NULL,
   `action_flag` smallint(5) UNSIGNED NOT NULL
 ) ;
+
+--
+-- Dumping data for table `django_admin_log`
+--
+
+INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
+(1, '2019-12-16 11:43:44.472430', '1', 'PostCategory object (1)', 2, '[{\"changed\": {\"fields\": [\"Post\"]}}]', 8, 1),
+(2, '2019-12-16 11:43:48.718780', '1', 'PostCategory object (1)', 2, '[{\"changed\": {\"fields\": [\"Post\"]}}]', 8, 1),
+(3, '2019-12-16 11:55:30.387196', '1', 'Tag object (1)', 1, '[{\"added\": {}}]', 10, 1),
+(4, '2019-12-16 12:19:59.988494', '3', 'Comment object (3)', 2, '[{\"changed\": {\"fields\": [\"Approve\"]}}]', 11, 1),
+(5, '2019-12-16 12:21:59.050537', '3', 'Comment object (3)', 2, '[{\"changed\": {\"fields\": [\"Approve\"]}}]', 11, 1),
+(6, '2019-12-16 12:26:41.785536', '2', 'Comment object (2)', 2, '[{\"changed\": {\"fields\": [\"Approve\"]}}]', 11, 1),
+(7, '2019-12-16 12:26:45.501230', '2', 'Comment object (2)', 2, '[{\"changed\": {\"fields\": [\"Approve\"]}}]', 11, 1),
+(8, '2019-12-18 11:33:24.827726', '5', 'Mẹo hay cuộc sống', 2, '[{\"changed\": {\"fields\": [\"Cate status\"]}}]', 9, 1),
+(9, '2019-12-18 11:33:28.272365', '4', 'Thủ thuật lập trình', 2, '[{\"changed\": {\"fields\": [\"Cate status\"]}}]', 9, 1),
+(10, '2019-12-18 11:33:32.462542', '3', 'Thủ thuật máy tính', 2, '[{\"changed\": {\"fields\": [\"Cate status\"]}}]', 9, 1),
+(11, '2019-12-18 11:33:41.359132', '2', 'Thủ thuật Internet', 2, '[{\"changed\": {\"fields\": [\"Cate status\"]}}]', 9, 1);
 
 -- --------------------------------------------------------
 
@@ -242,8 +268,10 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (4, 'auth', 'user'),
 (5, 'contenttypes', 'contenttype'),
 (9, 'home', 'category'),
+(11, 'home', 'comment'),
 (7, 'home', 'post'),
 (8, 'home', 'postcategory'),
+(10, 'home', 'tag'),
 (6, 'sessions', 'session');
 
 -- --------------------------------------------------------
@@ -299,9 +327,9 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('6p3wcsmgmwsvnn1iful1yq1mjrm5omlm', 'Y2I0NTRkYTM2YTJlMDZkY2RmNjY1NWE2ZGNiYmExNTc3Mjk4OTQ5ZDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZTZjN2ExNjcyZDYwMGMwMTU5ZWFmMjk3Y2ZiOGY4YzEyOTQwYTU0In0=', '2019-12-29 15:17:27.895336'),
 ('9ngnbnp4muf87ppcd9bw6g7v2xyqd0my', 'MDY2M2VmZjQ0YTk2ZGE1M2UwMjJmZmU5NjgyY2JkNTFhNmZhOTBhMTp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIyYTYyZjc0YzMzY2RlMzc4NzBkODE4YTliODJkNjg0ODAyYWYxZjg5In0=', '2019-12-29 14:16:51.551894'),
 ('n7y2ca9noykycze50sx1aa341ms6z7ug', 'Y2I0NTRkYTM2YTJlMDZkY2RmNjY1NWE2ZGNiYmExNTc3Mjk4OTQ5ZDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZTZjN2ExNjcyZDYwMGMwMTU5ZWFmMjk3Y2ZiOGY4YzEyOTQwYTU0In0=', '2019-12-29 14:15:59.531534'),
+('rzn46yd0wztus7vm48cw3uzg38qn36qp', 'Y2I0NTRkYTM2YTJlMDZkY2RmNjY1NWE2ZGNiYmExNTc3Mjk4OTQ5ZDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZTZjN2ExNjcyZDYwMGMwMTU5ZWFmMjk3Y2ZiOGY4YzEyOTQwYTU0In0=', '2020-01-01 11:33:08.818990'),
 ('ytj26matqgu4vgwgg5j95s4b98uaxxc2', 'Y2I0NTRkYTM2YTJlMDZkY2RmNjY1NWE2ZGNiYmExNTc3Mjk4OTQ5ZDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZTZjN2ExNjcyZDYwMGMwMTU5ZWFmMjk3Y2ZiOGY4YzEyOTQwYTU0In0=', '2019-12-29 14:06:54.340856');
 
 -- --------------------------------------------------------
@@ -317,7 +345,7 @@ CREATE TABLE `post` (
   `description` text COLLATE utf8_vietnamese_ci DEFAULT NULL,
   `thumbnail` varchar(255) COLLATE utf8_vietnamese_ci DEFAULT NULL,
   `date_published` date DEFAULT NULL,
-  `comment_enabled` bit(1) NOT NULL DEFAULT b'1'
+  `comment_enabled` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
@@ -325,9 +353,9 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`post_id`, `user_id`, `title`, `description`, `thumbnail`, `date_published`, `comment_enabled`) VALUES
-(1, 1, 'Test', '123', 'test.jpg', '2019-12-14', b'1'),
-(2, 1, 'Test 111', 'test', 'test.jpg', '2019-12-14', b'1'),
-(3, 1, 'Test 123', '123', 'test.jpg', '2019-12-14', b'1');
+(1, 1, 'Test', '123', 'test.jpg', '2019-12-14', 1),
+(2, 1, 'Test 111', 'test', 'test.jpg', '2019-12-14', 1),
+(3, 1, 'Test 123', '123', 'test.jpg', '2019-12-14', 1);
 
 -- --------------------------------------------------------
 
@@ -361,8 +389,15 @@ INSERT INTO `post_category` (`id`, `cate_id`, `post_id`) VALUES
 CREATE TABLE `tag` (
   `tag_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
-  `tag_name` int(11) NOT NULL
+  `tag_name` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+
+--
+-- Dumping data for table `tag`
+--
+
+INSERT INTO `tag` (`tag_id`, `post_id`, `tag_name`) VALUES
+(1, 1, 'test');
 
 --
 -- Indexes for dumped tables
@@ -501,7 +536,7 @@ ALTER TABLE `auth_permission`
 -- AUTO_INCREMENT for table `auth_user`
 --
 ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `auth_user_groups`
@@ -531,7 +566,7 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `django_admin_log`
@@ -543,7 +578,7 @@ ALTER TABLE `django_admin_log`
 -- AUTO_INCREMENT for table `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `django_migrations`
@@ -562,6 +597,12 @@ ALTER TABLE `post`
 --
 ALTER TABLE `post_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tag`
+--
+ALTER TABLE `tag`
+  MODIFY `tag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -613,6 +654,12 @@ ALTER TABLE `post`
 ALTER TABLE `post_category`
   ADD CONSTRAINT `postcate_fkid_cate` FOREIGN KEY (`cate_id`) REFERENCES `category` (`cate_id`),
   ADD CONSTRAINT `postcate_fkid_post` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`);
+
+--
+-- Constraints for table `tag`
+--
+ALTER TABLE `tag`
+  ADD CONSTRAINT `tag_fkid_post` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

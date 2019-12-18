@@ -17,7 +17,7 @@
             <input type="hidden" name="next" value="/" />
             {% for key,value in form.errors.items %}
                 {{value}}
-                {% endfor %}
+            {% endfor %}
                 <div class="form-group">
                     {% render_field form.username|add_class:"form-control"|append_attr:"type:text" type="text" placeholder="Tài khoản" %}
                 </div>
