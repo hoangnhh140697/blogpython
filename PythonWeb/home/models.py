@@ -177,7 +177,7 @@ class Post(models.Model):
     user = models.ForeignKey(AuthUser, models.DO_NOTHING)
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
-    thumbnail = models.CharField(max_length=255, blank=True, null=True)
+    thumbnail = models.ImageField()
     date_published = models.DateField(blank=True, null=True)
     comment_enabled = models.BooleanField(default=1)
 

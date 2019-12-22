@@ -132,3 +132,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
+PROJECT_PATH = os.path.abspath(os.path.dirname(__name__))
+
+MEDIA_ROOT = PROJECT_PATH + '/home/static/img/'
+MEDIA_URL = '/static/img/'

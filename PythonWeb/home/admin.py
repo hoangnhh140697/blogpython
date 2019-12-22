@@ -3,12 +3,12 @@ from .models import Post, PostCategory, Category, Tag, Contact, AuthUser, Commen
 from django import forms
 from django.db import models
 
+
 # Register your models here.
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'get_name', 'date_published', 'comment_enabled')
     list_filter = ['date_published']
     search_fields = ['title']
-
     def get_name(self, obj):
         return obj.user.username
     get_name.admin_order_field = 'username'
@@ -23,13 +23,18 @@ admin.site.register(Post, PostAdmin)
 
 
 class PostCategoryAdmin(admin.ModelAdmin):
-    list_display = ('get_name', 'post_id')
-    list_filter = ['cate']
-    search_fields = ['cate__cate_name']
-    def get_name(self, obj):
+    list_display = ('get_name_post', 'get_name_cate', 'post_id')
+    list_filter = ['cate__cate_name']
+    search_fields = ['post__title']
+    def get_name_cate(self, obj):
         return obj.cate.cate_name
-    get_name.admin_order_field = 'cate_name'
-    get_name.short_description = 'Category Name'
+    get_name_cate.admin_order_field = 'cate_name'
+    get_name_cate.short_description = 'Category Name'
+
+    def get_name_post(self, obj):
+        return obj.post.title
+    get_name_post.admin_order_field = 'title'
+    get_name_post.short_description = 'Post Name'
 
     #Get Form
     def get_form(self, request, obj=None, **kwargs):

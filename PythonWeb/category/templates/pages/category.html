@@ -25,7 +25,13 @@
                 <div class="post-item col-md-3">
                     <div class="post-item-inner">
                         <div class="post-item-head">
-                            <a href="{{ path }}/share/details/{{ row.post_id }}"><img src="{% static 'img/' %}{{ row.thumbnail }}"/></a>
+                            <a href="{{ path }}/share/details/{{ row.post_id }}">
+                                {% if row.thumbnail %}
+                                    <img src="{% static 'img/' %}{{ row.thumbnail }}"/>
+                                {% else %}
+                                    <img src="{% static 'img/test.jpg' %}"/>
+                                {% endif %}
+                            </a>
                         </div>
                         <div class="post-item-body">
                             <div class="post-item-title">
