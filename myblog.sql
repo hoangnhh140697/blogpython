@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2019 at 12:35 PM
+-- Generation Time: Dec 22, 2019 at 01:16 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -113,7 +113,7 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$180000$TWAg7R4AbeXx$RdxnkSfqcLcZ46VPIx5SkS/3owI8rlcPCUyI7u8ZT5A=', '2019-12-18 11:33:08.815992', 1, 'admin', '', '', 'admin@gmail.com', 1, 1, '2019-12-14 09:46:56.395981'),
+(1, 'pbkdf2_sha256$180000$TWAg7R4AbeXx$RdxnkSfqcLcZ46VPIx5SkS/3owI8rlcPCUyI7u8ZT5A=', '2019-12-22 11:47:50.878073', 1, 'admin', '', '', 'admin@gmail.com', 1, 1, '2019-12-14 09:46:56.395981'),
 (2, 'pbkdf2_sha256$180000$AnAsW5AumSFW$yRrqdgbhJvziA1CMy2sbK3aWsQbLSj5SNk0kLRw9LMI=', '2019-12-15 15:10:44.800374', 0, 'test', '', '', 'testB@gmail.com', 0, 1, '2019-12-15 13:58:07.342220'),
 (3, 'pbkdf2_sha256$180000$joIyErFaM9WT$xgzQz/Jdbxnl0wKC69yOwFn+v2phNOR7yd1rt3i7Mi4=', '2019-12-16 15:49:23.334428', 0, 'test123', '', '', 'hoangnhh140697@gmail.com', 0, 1, '2019-12-16 15:49:13.491508');
 
@@ -243,7 +243,28 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (8, '2019-12-18 11:33:24.827726', '5', 'Mẹo hay cuộc sống', 2, '[{\"changed\": {\"fields\": [\"Cate status\"]}}]', 9, 1),
 (9, '2019-12-18 11:33:28.272365', '4', 'Thủ thuật lập trình', 2, '[{\"changed\": {\"fields\": [\"Cate status\"]}}]', 9, 1),
 (10, '2019-12-18 11:33:32.462542', '3', 'Thủ thuật máy tính', 2, '[{\"changed\": {\"fields\": [\"Cate status\"]}}]', 9, 1),
-(11, '2019-12-18 11:33:41.359132', '2', 'Thủ thuật Internet', 2, '[{\"changed\": {\"fields\": [\"Cate status\"]}}]', 9, 1);
+(11, '2019-12-18 11:33:41.359132', '2', 'Thủ thuật Internet', 2, '[{\"changed\": {\"fields\": [\"Cate status\"]}}]', 9, 1),
+(12, '2019-12-22 11:37:18.324548', '4', 'Post object (4)', 1, '[{\"added\": {}}]', 7, 1),
+(13, '2019-12-22 11:37:37.036771', '6', 'PostCategory object (6)', 1, '[{\"added\": {}}]', 8, 1),
+(14, '2019-12-22 11:48:24.415053', '4', 'Post object (4)', 3, '', 7, 1),
+(15, '2019-12-22 11:52:53.212665', '6', 'PostCategory object (6)', 3, '', 8, 1),
+(16, '2019-12-22 11:53:05.787027', '4', 'Post object (4)', 3, '', 7, 1),
+(17, '2019-12-22 11:53:15.832305', '3', 'Post object (3)', 2, '[{\"changed\": {\"fields\": [\"Title\"]}}]', 7, 1),
+(18, '2019-12-22 11:53:53.579764', '3', 'Post object (3)', 2, '[{\"changed\": {\"fields\": [\"Thumbnail\"]}}]', 7, 1),
+(19, '2019-12-22 12:00:04.830687', '3', 'Post object (3)', 2, '[{\"changed\": {\"fields\": [\"Thumbnail\"]}}]', 7, 1),
+(20, '2019-12-22 12:00:56.541901', '3', 'Post object (3)', 2, '[{\"changed\": {\"fields\": [\"Thumbnail\"]}}]', 7, 1),
+(21, '2019-12-22 12:04:32.201622', '3', 'Post object (3)', 2, '[{\"changed\": {\"fields\": [\"Thumbnail\"]}}]', 7, 1),
+(22, '2019-12-22 12:05:54.744280', '3', 'Post object (3)', 2, '[{\"changed\": {\"fields\": [\"Thumbnail\"]}}]', 7, 1),
+(23, '2019-12-22 12:06:47.785980', '3', 'Post object (3)', 2, '[{\"changed\": {\"fields\": [\"Thumbnail\"]}}]', 7, 1),
+(24, '2019-12-22 12:07:29.087482', '3', 'Post object (3)', 2, '[{\"changed\": {\"fields\": [\"Thumbnail\"]}}]', 7, 1),
+(25, '2019-12-22 12:08:23.059634', '3', 'Post object (3)', 2, '[{\"changed\": {\"fields\": [\"Thumbnail\"]}}]', 7, 1),
+(26, '2019-12-22 12:08:59.815918', '3', 'Post object (3)', 2, '[{\"changed\": {\"fields\": [\"Thumbnail\"]}}]', 7, 1),
+(27, '2019-12-22 12:09:28.862576', '3', 'Post object (3)', 2, '[{\"changed\": {\"fields\": [\"Thumbnail\"]}}]', 7, 1),
+(28, '2019-12-22 12:10:52.406094', '3', 'Post object (3)', 2, '[{\"changed\": {\"fields\": [\"Thumbnail\"]}}]', 7, 1),
+(29, '2019-12-22 12:11:48.477684', '3', 'Post object (3)', 2, '[{\"changed\": {\"fields\": [\"Thumbnail\"]}}]', 7, 1),
+(30, '2019-12-22 12:12:15.053554', '3', 'Post object (3)', 2, '[{\"changed\": {\"fields\": [\"Thumbnail\"]}}]', 7, 1),
+(31, '2019-12-22 12:12:34.630235', '3', 'Post object (3)', 2, '[{\"changed\": {\"fields\": [\"Thumbnail\"]}}]', 7, 1),
+(32, '2019-12-22 12:14:17.875967', '1', 'Post object (1)', 2, '[{\"changed\": {\"fields\": [\"Title\", \"Thumbnail\"]}}]', 7, 1);
 
 -- --------------------------------------------------------
 
@@ -328,6 +349,7 @@ CREATE TABLE `django_session` (
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
 ('9ngnbnp4muf87ppcd9bw6g7v2xyqd0my', 'MDY2M2VmZjQ0YTk2ZGE1M2UwMjJmZmU5NjgyY2JkNTFhNmZhOTBhMTp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIyYTYyZjc0YzMzY2RlMzc4NzBkODE4YTliODJkNjg0ODAyYWYxZjg5In0=', '2019-12-29 14:16:51.551894'),
+('atov0kbj28gbgfle91az0aogi25ldojw', 'Y2I0NTRkYTM2YTJlMDZkY2RmNjY1NWE2ZGNiYmExNTc3Mjk4OTQ5ZDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZTZjN2ExNjcyZDYwMGMwMTU5ZWFmMjk3Y2ZiOGY4YzEyOTQwYTU0In0=', '2020-01-05 11:47:50.882094'),
 ('n7y2ca9noykycze50sx1aa341ms6z7ug', 'Y2I0NTRkYTM2YTJlMDZkY2RmNjY1NWE2ZGNiYmExNTc3Mjk4OTQ5ZDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZTZjN2ExNjcyZDYwMGMwMTU5ZWFmMjk3Y2ZiOGY4YzEyOTQwYTU0In0=', '2019-12-29 14:15:59.531534'),
 ('rzn46yd0wztus7vm48cw3uzg38qn36qp', 'Y2I0NTRkYTM2YTJlMDZkY2RmNjY1NWE2ZGNiYmExNTc3Mjk4OTQ5ZDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZTZjN2ExNjcyZDYwMGMwMTU5ZWFmMjk3Y2ZiOGY4YzEyOTQwYTU0In0=', '2020-01-01 11:33:08.818990'),
 ('ytj26matqgu4vgwgg5j95s4b98uaxxc2', 'Y2I0NTRkYTM2YTJlMDZkY2RmNjY1NWE2ZGNiYmExNTc3Mjk4OTQ5ZDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZTZjN2ExNjcyZDYwMGMwMTU5ZWFmMjk3Y2ZiOGY4YzEyOTQwYTU0In0=', '2019-12-29 14:06:54.340856');
@@ -353,9 +375,9 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`post_id`, `user_id`, `title`, `description`, `thumbnail`, `date_published`, `comment_enabled`) VALUES
-(1, 1, 'Test', '123', 'test.jpg', '2019-12-14', 1),
+(1, 1, 'Hướng dẫn cài lại win10', '123', 'JCZc-cai-win-10-8.jpg', '2019-12-14', 1),
 (2, 1, 'Test 111', 'test', 'test.jpg', '2019-12-14', 1),
-(3, 1, 'Test 123', '123', 'test.jpg', '2019-12-14', 1);
+(3, 1, 'Thủ thuật Facebook', '123', 'tricks_fb.jpg', '2019-12-14', 1);
 
 -- --------------------------------------------------------
 
@@ -590,13 +612,13 @@ ALTER TABLE `django_migrations`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `post_category`
 --
 ALTER TABLE `post_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tag`
